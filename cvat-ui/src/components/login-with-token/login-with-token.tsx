@@ -28,5 +28,5 @@ export default function LoginWithTokenComponent(): JSX.Element {
     if (cookies.sessionid && cookies.csrftoken) {
         return <Redirect to={search.get('next') || '/tasks'} />;
     }
-    return <></>;
+    return <Redirect to={'/auth/login'} />;
 }
