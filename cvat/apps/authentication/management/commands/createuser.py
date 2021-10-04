@@ -3,7 +3,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,Group
 from django.core.management.base import BaseCommand
 
 
@@ -18,6 +18,8 @@ class Command(BaseCommand):
         username = options['username']
         password = options['password']
         user = User.objects.create_user(username, password=password)
+        group = Group.objects.get(name='user')
+        group.user_set.add(user)
         user.is_superuser = False
         user.is_staff = False
         user.save()
