@@ -106,7 +106,7 @@ RUN adduser --shell /bin/bash --disabled-password --gecos "" ${USER} && \
     else \
         echo export "GIT_SSH_COMMAND=\"ssh -o StrictHostKeyChecking=no -o ConnectTimeout=30 -o ProxyCommand='nc -X 5 -x ${socks_proxy} %h %p'\"" >> ${HOME}/.bashrc; \
     fi
-
+RUN usermod -aG sudo ${USER}
 ARG CLAM_AV="no"
 RUN if [ "$CLAM_AV" = "yes" ]; then \
         apt-get update && \
