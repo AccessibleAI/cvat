@@ -478,6 +478,8 @@ CACHES = {
 
 USE_CACHE = True
 
+X_FRAME_OPTIONS = 'ALLOWALL'
+
 CORS_ALLOW_HEADERS = list(default_headers) + [
     # tus upload protocol headers
     'upload-offset',
